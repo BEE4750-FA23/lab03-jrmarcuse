@@ -7454,7 +7454,7 @@ will see this often and shouldn’t need to touch it.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e4a7ead8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e4a7ead8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7466,19 +7466,6 @@ will see this often and shouldn’t need to touch it.</p>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">"."</span><span class="p">)</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre><span class="ansi-green-intense-fg ansi-bold">  Activating</span> project at `~/Library/CloudStorage/OneDrive-CornellUniversity/Cornell Onedrive/Cornell Desktop/Fall2023/BEE4750/lab03-jrmarcuse`
-</pre>
 </div>
 </div>
 </div>
@@ -7568,22 +7555,6 @@ inputs, F fir inputs.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e64f4869-4c05-4097-9118-15c5583c58a3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<figure id="fig-schematic">
-<img alt="No description has been provided for this image" src="attachment:lab03_files/figure-ipynb/mermaid-figure-1.png"/>
-<figcaption>Figure 1: Flowchat of the resource allocation problem in
-this lab.</figcaption>
-</figure>
-<h2 id="Problems-(10-points)">Problems (10 points)<a class="anchor-link" href="#Problems-(10-points)">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4909da23-bc65-4291-ac3a-b991ffd66163">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7609,82 +7580,13 @@ units are.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6bc2998f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4f726d68">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>My decision variable are the amount of Spruce and the amount of Fir to wood that will be associated with each plywood grade of production. Spruce towards grade 1 plywood will be variable S[1], Spruce towards grade 2 will be S[2] and towards grade 3 will be S[3]. Fir for plywood grade 1 will be variable F[1], Fir for grade 2 plywood will be F[2] and for grade 3 it will be F[3] and they are in units of bf. All variables must be greater than or equal to 0 as you cannot purchase a negative amount of wood.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e4f7663d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="c">#First I will define the wood model</span>
-<span class="n">wood_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Model</span><span class="p">(</span><span class="n">HiGHS</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">)</span>
-
-<span class="c">#Next I will define the Spruce (S) and Fir (F) variables</span>
-<span class="n">T</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">3</span>
-<span class="nd">@variable</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="nd">@variable</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">F</span><span class="p">[</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>1-dimensional DenseAxisArray{VariableRef,1,...} with index sets:
-    Dimension 1, 1:3
-And data, a 3-element Vector{VariableRef}:
- F[1]
- F[2]
- F[3]</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e5ab827a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">all_variables</span><span class="p">(</span><span class="n">wood_model</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>6-element Vector{VariableRef}:
- S[1]
- S[2]
- S[3]
- F[1]
- F[2]
- F[3]</pre>
-</div>
+<p>My decision variable will be how much wood in total is allocated towards producing each type of plywood grade. The variable will be P, which will be a vector of length 3 with each value being the corresponding amount of wood. P[1] will be the amount going towards grade 1 plywood, P[2] for grade 2 and P[3] for grade 3. The units are bf of wood.</p>
 </div>
 </div>
 </div>
@@ -7702,56 +7604,17 @@ credit just for the function alone.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6c0891af">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=91aec6f7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The objective function will be profits which involves adding up all the revenue from plywood sales and then subtracting the costs of purchasing the raw materials.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6709955d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>0.5 bf of spruce and 1.5 bf of fir makes 1bf of grade 1 plywood, so therefore 500 bf of S and 1500 bf of F makes $400.</p>
-<p>For grade 1 for every 2000 bf in total it would be $400</p>
-<p>For grade 2 for every 3000 bf total it makes $520</p>
-<p>For grade 3 for every 3500 bf it makes $700</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bddda629">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="nd">@objective</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="w"> </span><span class="n">Max</span><span class="p">,</span><span class="mi">400</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2000</span><span class="p">)</span>
-<span class="o">+</span><span class="mi">520</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="mi">3000</span><span class="p">)</span>
-<span class="o">+</span><span class="mi">700</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">/</span><span class="mi">3500</span><span class="p">)</span>
-<span class="o">-</span><span class="n">sum</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="mf">0.12</span><span class="o">-</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">*</span><span class="mf">0.08</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedLatex jp-OutputArea-output" data-mime-type="text/latex" tabindex="0">
-$ 0.08000000000000002 S_{1} + 0.12000000000000001 F_{1} + 0.053333333333333344 S_{2} + 0.09333333333333334 F_{2} + 0.08000000000000002 S_{3} + 0.12000000000000001 F_{3} $
-</div>
+<p>The objective function will be based on the total amount of wood inputted into each grade of production. We know from the table earlier that for grade 1 id we input 2000bf of raw wood we get 1000bf of grade 1 plywood and therefore $400. Grade 2 produces $520 for every 3000bf of raw wood and grade 3 produces $700 for every 3500bf of raw wood. The ratios of wood necessary for each one produced is also important for determining costs. For grade 1 the ratio of spruce to fir is 1:3, for grade 2 it is 1:2 and for grade 3 it is 3:4.</p>
+<p>The cost of each raw wood material must also be subtracted with these appropriate ratios and the fraction of total inputted wood for each grade is multiplied by the decision variable for the amount ofwood entering each plywood production process.</p>
+<p>Therefore the objective function will be 400(P[1]/2000)+520(P[2]/3000)+700(P[3]/3500)-0.12(1/3)P[1]-0.08(2/3)P[1]-0.12(1/2)P[2]-0.08(1/2)P[2]-0.12(3/7)P[3]-0.08(4/7)P[3]</p>
+<p>Which simplifies to:
+0.11P[1]+0.08[2]+0.10286P[3]</p>
 </div>
 </div>
 </div>
@@ -7775,37 +7638,9 @@ final constraints alone.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Constraints will include the total amount of Spruce and Fir wood that is available to purchase from the woods. Other constraints include fixing the ratios of spruce to fir for each plywood grade making process.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2aff8b36">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="nd">@constraint</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">Spruce_Resources</span><span class="p">,</span><span class="n">sum</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">320000</span><span class="p">)</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">Fir_Resources</span><span class="p">,</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">720000</span><span class="p">)</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">Grade1_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">3</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">Grade2_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">==</span><span class="mi">2</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">Grade3_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">==</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedLatex jp-OutputArea-output" data-mime-type="text/latex" tabindex="0">
-$$ -1.3333333333333333 S_{3} + F_{3} = 0 $$
-</div>
+<p>Constraints will include the total amount of wood in the forest and how the sum of each element in the P vector for total raw wood inputs contribute to each type of wood based on fixed ratios.</p>
+<p>The total sum of (1/4)P[1]+(1/3)P[2]+(3/7)P[3] must not exceed 320000bf and the total sum of all elements in P minus this amount must not exceed 720000 bf.</p>
+<p>The ratios from above come from the ratios in the original prompt. Since the ratio is 1:3 for grade 1, 1/4 of the inputted wood must be spruce. For grade 2 the ratio is 1:2 so 1/3 of the inputted wood must be spruce. And finally, for grade 3 the ratio is 3:4 so 3/7 of the total inputted wood must be spruce. That is where the contraint equation for the total amount of spruce comes from, and then the total amount of wood in variable P minus that amount must be Spruce.</p>
 </div>
 </div>
 </div>
@@ -7822,20 +7657,6 @@ example of the syntax for this, see lines 82–91
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6e69e2de">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="n">latex_formulation</span><span class="p">(</span><span class="n">wood_model</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0613b891">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7844,149 +7665,13 @@ example of the syntax for this, see lines 82–91
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>$$ \begin{aligned}
-\max\quad &amp; 0.08000000000000002 S_{1} + 0.12000000000000001 F_{1} + 0.053333333333333344 S_{2} + 0.09333333333333334 F_{2} + 0.08000000000000002 S_{3} + 0.12000000000000001 F_{3}\\
-\text{Subject to} \quad &amp; -3 S_{1} + F_{1} = 0\\
- &amp; -2 S_{2} + F_{2} = 0\\
- &amp; -1.3333333333333333 S_{3} + F_{3} = 0\\
- &amp; S_{1} + S_{2} + S_{3} \leq 320000\\
- &amp; F_{1} + F_{2} + F_{3} \leq 720000\\
- &amp; S_{1} \geq 0\\
- &amp; S_{2} \geq 0\\
- &amp; S_{3} \geq 0\\
- &amp; F_{1} \geq 0\\
- &amp; F_{2} \geq 0\\
- &amp; F_{3} \geq 0\\
+\max\quad &amp; 0.11000000000000001 P_{1} + 0.08000000000000003 P_{2} + 0.10285714285714287 P_{3}\\
+\text{Subject to} \quad &amp; 0.25 P_{1} + 0.3333333333333333 P_{2} + 0.42857142857142855 P_{3} \leq 320000\\
+ &amp; 0.75 P_{1} + 0.6666666666666666 P_{2} + 0.5714285714285714 P_{3} \leq 720000\\
+ &amp; P_{1} \geq 0\\
+ &amp; P_{2} \geq 0\\
+ &amp; P_{3} \geq 0\\
 \end{aligned} $$</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1d7b42b0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">optimize!</span><span class="p">(</span><span class="n">wood_model</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Running HiGHS 1.5.3 [date: 1970-01-01, git hash: 45a127b78]
-Copyright (c) 2023 HiGHS under MIT licence terms
-Presolving model
-2 rows, 3 cols, 6 nonzeros
-2 rows, 3 cols, 6 nonzeros
-Presolve : Reductions: rows 2(-3); columns 3(-3); elements 6(-6)
-Solving the presolved LP
-Using EKK dual simplex solver - serial
-  Iteration        Objective     Infeasibilities num(sum)
-          0    -4.4666614604e-01 Ph1: 2(4.58333); Du: 3(0.446666) 0s
-          2    -1.1200000000e+05 Pr: 0(0) 0s
-Solving the original LP from the solution after postsolve
-Model   status      : Optimal
-Simplex   iterations: 2
-Objective value     :  1.1200000000e+05
-HiGHS run time      :          0.01
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fc32ee84">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">value</span><span class="o">.</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>1-dimensional DenseAxisArray{Float64,1,...} with index sets:
-    Dimension 1, 1:3
-And data, a 3-element Vector{Float64}:
- 176000.00000000003
-     -0.0
- 143999.99999999997</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c8bcde3f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">value</span><span class="o">.</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>1-dimensional DenseAxisArray{Float64,1,...} with index sets:
-    Dimension 1, 1:3
-And data, a 3-element Vector{Float64}:
- 528000.0000000001
-      0.0
- 191999.99999999994</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2a77d300">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">objective_value</span><span class="p">(</span><span class="n">wood_model</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>112000.00000000001</pre>
-</div>
 </div>
 </div>
 </div>
@@ -8111,6 +7796,59 @@ a single click when you want to make a change.</p>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=999ec88b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-julia"><pre><span></span><span class="c">#First I will define the wood model</span>
+<span class="n">wood_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Model</span><span class="p">(</span><span class="n">HiGHS</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">)</span>
+
+<span class="c">#Next I will define the Spruce (S) and Fir (F) variables</span>
+<span class="n">T</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">3</span>
+<span class="nd">@variable</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">P</span><span class="p">[</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c">#The objective function will be the sum of revenues </span>
+<span class="w">    </span><span class="c">#minus the cost of raw wood materials</span>
+<span class="nd">@objective</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="w"> </span><span class="n">Max</span><span class="p">,</span>
+<span class="mi">400</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2000</span><span class="p">)</span>
+<span class="o">+</span><span class="mi">520</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="mi">3000</span><span class="p">)</span>
+<span class="o">+</span><span class="mi">700</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">/</span><span class="mi">3500</span><span class="p">)</span>
+<span class="o">-</span><span class="mf">0.12</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="o">-</span><span class="mf">0.08</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+
+<span class="c">#The total amount of wood resources will be contrained</span>
+<span class="w">    </span><span class="c">#based on availability of Spruce and Fir</span>
+<span class="nd">@constraint</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">Spruce_Resources</span><span class="p">,(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">320000</span><span class="p">)</span>
+<span class="nd">@constraint</span><span class="p">(</span><span class="n">wood_model</span><span class="p">,</span><span class="n">Fir_Resources</span><span class="p">,(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">720000</span><span class="p">)</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">latex_formulation</span><span class="p">(</span><span class="n">wood_model</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6c14d83d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>$$ \begin{aligned}
+\max\quad &amp; 0.11000000000000001 P_{1} + 0.08000000000000003 P_{2} + 0.10285714285714287 P_{3}\\
+\text{Subject to} \quad &amp; 0.25 P_{1} + 0.3333333333333333 P_{2} + 0.42857142857142855 P_{3} \leq 320000\\
+ &amp; 0.75 P_{1} + 0.6666666666666666 P_{2} + 0.5714285714285714 P_{3} \leq 720000\\
+ &amp; P_{1} \geq 0\\
+ &amp; P_{2} \geq 0\\
+ &amp; P_{3} \geq 0\\
+\end{aligned} $$</p>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=de5ff570-e9ee-40c2-8784-2633d1a4dc0c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -8132,7 +7870,7 @@ solution with `optimize!():</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">optimize!</span><span class="p">(</span><span class="n">example_model</span><span class="p">)</span>
+<div class="highlight hl-julia"><pre><span></span><span class="n">optimize!</span><span class="p">(</span><span class="n">wood_model</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8144,17 +7882,23 @@ solution with `optimize!():</p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>
-UndefVarError: `example_model` not defined
-
-
-
-Stacktrace:
-
- [1] top-level scope
-
-   @ ~/Library/CloudStorage/OneDrive-CornellUniversity/Cornell Onedrive/Cornell Desktop/Fall2023/BEE4750/lab03-jrmarcuse/lab03.ipynb:1</pre>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running HiGHS 1.5.3 [date: 1970-01-01, git hash: 45a127b78]
+Copyright (c) 2023 HiGHS under MIT licence terms
+Presolving model
+2 rows, 3 cols, 6 nonzeros
+2 rows, 3 cols, 6 nonzeros
+Presolve : Reductions: rows 2(-0); columns 3(-0); elements 6(-0) - Not reduced
+Problem not reduced by presolve: solving the LP
+Using EKK dual simplex solver - serial
+  Iteration        Objective     Infeasibilities num(sum)
+          0    -2.9285683924e-01 Ph1: 2(3); Du: 3(0.292857) 0s
+          2     1.1200000000e+05 Pr: 0(0) 0s
+Model   status      : Optimal
+Simplex   iterations: 2
+Objective value     :  1.1200000000e+05
+HiGHS run time      :          0.00
+</pre>
 </div>
 </div>
 </div>
@@ -8179,7 +7923,7 @@ well):</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=36b7a4d7">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36b7a4d7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8187,13 +7931,30 @@ well):</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">value</span><span class="o">.</span><span class="p">(</span><span class="n">example_x</span><span class="p">)</span>
+<div class="highlight hl-julia"><pre><span></span><span class="n">value</span><span class="o">.</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b0b97e16">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1-dimensional DenseAxisArray{Float64,1,...} with index sets:
+    Dimension 1, 1:3
+And data, a 3-element Vector{Float64}:
+ 704000.0
+      0.0
+ 336000.0</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=73129898">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8201,8 +7962,20 @@ well):</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">value</span><span class="o">.</span><span class="p">(</span><span class="n">example_z</span><span class="p">)</span>
+<div class="highlight hl-julia"><pre><span></span><span class="n">objective_value</span><span class="p">(</span><span class="n">wood_model</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>112000.00000000003</pre>
 </div>
 </div>
 </div>
@@ -8220,7 +7993,7 @@ variable with:</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c969ed7f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c969ed7f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8228,9 +8001,32 @@ variable with:</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="n">shadow_price</span><span class="p">(</span><span class="n">constraint1</span><span class="p">)</span><span class="w"> </span><span class="c"># this is why we named the constraints when we defined them</span>
+<div class="highlight hl-julia"><pre><span></span><span class="n">shadow_price</span><span class="p">(</span><span class="n">Spruce_Resources</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span><span class="w"> </span><span class="c"># this is why we named the constraints when we defined them</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>79.99999999999999</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3056ee62">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The profit would increase by $80 if an additional 1000bf of spruce were added.</p>
 </div>
 </div>
 </div>
@@ -8246,7 +8042,7 @@ additional bf of fir?</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=248f4541">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2a4ebde2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8254,31 +8050,8 @@ additional bf of fir?</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="c">#First I will define the wood model</span>
-<span class="n">extra_spruce_wood_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Model</span><span class="p">(</span><span class="n">HiGHS</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">)</span>
-
-<span class="c">#Next I will define the Spruce (S) and Fir (F) variables</span>
-<span class="n">T</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">3</span>
-<span class="nd">@variable</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">,</span><span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="nd">@variable</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">,</span><span class="n">F</span><span class="p">[</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c">#define the objective function</span>
-<span class="nd">@objective</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">,</span><span class="w"> </span><span class="n">Max</span><span class="p">,</span><span class="mi">400</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2000</span><span class="p">)</span>
-<span class="o">+</span><span class="mi">520</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="mi">3000</span><span class="p">)</span>
-<span class="o">+</span><span class="mi">700</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">/</span><span class="mi">3500</span><span class="p">)</span>
-<span class="o">-</span><span class="n">sum</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="mf">0.12</span><span class="o">-</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">*</span><span class="mf">0.08</span><span class="p">)</span>
-
-<span class="c">#define constraints</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">,</span><span class="n">Spruce_Resources</span><span class="p">,</span><span class="n">sum</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">&lt;=</span><span class="p">(</span><span class="mi">320000</span><span class="o">+</span><span class="mi">2000</span><span class="p">))</span>
-<span class="w">    </span><span class="c">#added 2000 bf of spruce</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">,</span><span class="n">Fir_Resources</span><span class="p">,</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">720000</span><span class="p">)</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">,</span><span class="n">Grade1_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">3</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">,</span><span class="n">Grade2_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">==</span><span class="mi">2</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">,</span><span class="n">Grade3_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">==</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-
-<span class="n">optimize!</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">)</span>
-
-<span class="k">return</span><span class="w"> </span><span class="n">objective_value</span><span class="p">(</span><span class="n">extra_spruce_wood_model</span><span class="p">)</span>
+<div class="highlight hl-julia"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">shadow_price</span><span class="p">(</span><span class="n">Spruce_Resources</span><span class="p">)</span><span class="o">*</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">shadow_price</span><span class="p">(</span><span class="n">Fir_Resources</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8291,101 +8064,13 @@ additional bf of fir?</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Running HiGHS 1.5.3 [date: 1970-01-01, git hash: 45a127b78]
-Copyright (c) 2023 HiGHS under MIT licence terms
-Presolving model
-2 rows, 3 cols, 6 nonzeros
-2 rows, 3 cols, 6 nonzeros
-Presolve : Reductions: rows 2(-3); columns 3(-3); elements 6(-6)
-Solving the presolved LP
-Using EKK dual simplex solver - serial
-  Iteration        Objective     Infeasibilities num(sum)
-          0    -4.4666614604e-01 Ph1: 2(4.58333); Du: 3(0.446666) 0s
-          2    -1.1216000000e+05 Pr: 0(0) 0s
-Solving the original LP from the solution after postsolve
-Model   status      : Optimal
-Simplex   iterations: 2
-Objective value     :  1.1216000000e+05
-HiGHS run time      :          0.00
-</pre>
+<pre>159.99999999999997</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>112160.00000000001</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dcb75a66">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-julia"><pre><span></span><span class="c">#First I will define the wood model</span>
-<span class="n">extra_fir_wood_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Model</span><span class="p">(</span><span class="n">HiGHS</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">)</span>
-
-<span class="c">#Next I will define the Spruce (S) and Fir (F) variables</span>
-<span class="n">T</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">3</span>
-<span class="nd">@variable</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">,</span><span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="nd">@variable</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">,</span><span class="n">F</span><span class="p">[</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c">#define the objective function</span>
-<span class="nd">@objective</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">,</span><span class="w"> </span><span class="n">Max</span><span class="p">,</span><span class="mi">400</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2000</span><span class="p">)</span>
-<span class="o">+</span><span class="mi">520</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="mi">3000</span><span class="p">)</span>
-<span class="o">+</span><span class="mi">700</span><span class="o">*</span><span class="p">((</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">/</span><span class="mi">3500</span><span class="p">)</span>
-<span class="o">-</span><span class="n">sum</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="mf">0.12</span><span class="o">-</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">*</span><span class="mf">0.08</span><span class="p">)</span>
-
-<span class="c">#define constraints</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">,</span><span class="n">Spruce_Resources</span><span class="p">,</span><span class="n">sum</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">320000</span><span class="p">)</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">,</span><span class="n">Fir_Resources</span><span class="p">,</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="o">&lt;=</span><span class="p">(</span><span class="mi">720000</span><span class="o">+</span><span class="mi">1000</span><span class="p">))</span>
-<span class="w">    </span><span class="c">#added 1000 bf of fir</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">,</span><span class="n">Grade1_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">3</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">,</span><span class="n">Grade2_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">==</span><span class="mi">2</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">,</span><span class="n">Grade3_ratio</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">==</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-
-<span class="n">optimize!</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">)</span>
-
-<span class="k">return</span><span class="w"> </span><span class="n">objective_value</span><span class="p">(</span><span class="n">extra_fir_wood_model</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Running HiGHS 1.5.3 [date: 1970-01-01, git hash: 45a127b78]
-Copyright (c) 2023 HiGHS under MIT licence terms
-Presolving model
-2 rows, 3 cols, 6 nonzeros
-2 rows, 3 cols, 6 nonzeros
-Presolve : Reductions: rows 2(-3); columns 3(-3); elements 6(-6)
-Solving the presolved LP
-Using EKK dual simplex solver - serial
-  Iteration        Objective     Infeasibilities num(sum)
-          0    -4.4666614604e-01 Ph1: 2(4.58333); Du: 3(0.446666) 0s
-          2    -1.1212000000e+05 Pr: 0(0) 0s
-Solving the original LP from the solution after postsolve
-Model   status      : Optimal
-Simplex   iterations: 2
-Objective value     :  1.1212000000e+05
-HiGHS run time      :          0.00
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>112120.00000000001</pre>
+<pre>120.00000000000003</pre>
 </div>
 </div>
 </div>
@@ -8397,7 +8082,7 @@ HiGHS run time      :          0.00
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>I would prefer 2000 bf of extra Spruce as it optimizes with an objective value of $112,160 whereas an extra 1000 bf of extra fir results in $112,120 total revenue. The difference is an extra $40 if you choose the 2000 bf of spruce over 1000 bf of fir.</p>
+<p>I would prefer 2000 bf of extra Spruce because it would increase profits by $160 whereas 1000 bf of additional fir would increase profuts by $120. The difference would be an extra $40 if 2000 bf of spruce is chosen over 1000 bf of fir.</p>
 </div>
 </div>
 </div>
